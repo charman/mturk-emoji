@@ -41,10 +41,12 @@
       return out.join('');
     };
 
+    function displayEmoji() {
+      $(this).text(utf8ByteArrayToString(JSON.parse($(this).attr('data-emoji-bytes'))));
+    }
+
     $( document ).ready(function() {
-      $('span.emoji-bytes').each(function() {
-        $(this).text(utf8ByteArrayToString(JSON.parse($(this).attr('data-emoji-bytes'))))
-      });
+      $('span.emoji-bytes').each(displayEmoji);
     });
     </script>
   </head>
