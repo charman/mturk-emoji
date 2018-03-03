@@ -4,17 +4,18 @@
 from __future__ import print_function
 import codecs
 import json
+import re
 import sys
 
 
-def emoji_to_span(emoji):
-    bytes = codecs.encode(emoji, 'utf-8')
+def emoji_match_to_span(emoji_match):
+    bytes = codecs.encode(emoji_match.group(), 'utf-8')
     bytes_as_json = json.dumps([ord(b) for b in bytes])
     return '<span class="emoji-bytes" data-emoji-bytes="%s"></span>' % bytes_as_json
     return emoji
 
 
-def replace_emoji_characters(s, replacement_character=u' '):
+def replace_emoji_characters(s):
     """
     Mechanical Turk will reject CSV input files containing Emoji
     characters with this error message:
@@ -34,12 +35,12 @@ def replace_emoji_characters(s, replacement_character=u' '):
     else:
         raise UnicodeError("Unable to determine if Python was built using UCS-2 or UCS-4")
 
-    return highpoints.sub(replacement_character, s)
+    return highpoints.sub(emoji_match_to_span, s)
 
 
 def main():
     emoji = codecs.open('emoji.txt', encoding='utf-8').read().strip()
-    print(emoji_to_span(emoji))
+    print(replace_emoji_characters(emoji))
 
 
 if __name__ == "__main__":
