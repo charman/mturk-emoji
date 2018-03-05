@@ -11,7 +11,7 @@ import sys
 def emoji_match_to_span(emoji_match):
     bytes = codecs.encode(emoji_match.group(), 'utf-8')
     bytes_as_json = json.dumps([ord(b) for b in bytes])
-    return '<span class="emoji-bytes" data-emoji-bytes="%s"></span>' % bytes_as_json
+    return "<span class='emoji-bytes' data-emoji-bytes='%s'></span>" % bytes_as_json
     return emoji
 
 
