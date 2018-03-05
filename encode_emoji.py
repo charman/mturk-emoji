@@ -32,7 +32,7 @@ def replace_emoji_characters(s):
             Unicode string
         """
         bytes = codecs.encode(emoji_match.group(), 'utf-8')
-        bytes_as_json = json.dumps([ord(b) for b in bytes])
+        bytes_as_json = json.dumps([b for b in bytearray(bytes)])
         return u"<span class='emoji-bytes' data-emoji-bytes='%s'></span>" % \
             bytes_as_json
 
