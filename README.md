@@ -1,7 +1,8 @@
 mturk-emoji
 ===========
 
-Python + JavaScript workaround for mturk's rejection of Emoji.
+Python + JavaScript workaround for mturk's rejection of CSV files with
+Emoji.
 
 Use Case
 --------
