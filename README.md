@@ -1,10 +1,26 @@
 mturk-emoji
 ===========
 
-Python + JavaScript workaround for mturk's rejection of Emoji
+Python + JavaScript workaround for mturk's rejection of Emoji.
 
-As of early 2018, Amazon's Mechanical Turk service rejects CSV HIT
-files that contain 4-byte UTF-8 characters - such as Emoji.
+Use Case
+--------
+
+You want to upload a CSV HIT file to Mechanical Turk that contains
+Emoji characters, and have Mechanical Turk render the Emoji in an HTML
+HIT template.  But as of early 2018, Amazon's Mechanical Turk service
+rejects CSV HIT files that contain 4-byte UTF-8 characters - such as
+Emoji.
+
+Mechanical Turk rejects CSV files with Emoji characters with messages
+with the format:
+
+    Errors
+    Line 55: Unsupported character found: 😀
+    Line 226: Unsupported character found: 😱
+
+Implemented Solution
+--------------------
 
 This repository contains Python code in
 [encode_emoji.py](encode_emojiy.py) for converting all 4-byte UTF-8
@@ -41,6 +57,7 @@ which is just rendered as the original Emoji:
 😀
 ```
 
+Please note that this JavaScript code depends on the jQuery library.
 Sample usage:
 
 ``` html
@@ -55,3 +72,5 @@ $(document).ready(function() {
 });
 </script>
 ```
+
+Please see the [index.html](index.html) file for more details.
