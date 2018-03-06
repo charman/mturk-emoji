@@ -36,5 +36,5 @@ function displayEmoji() {
     return out.join('');
   }
 
-  $(this).text(utf8ByteArrayToString(JSON.parse($(this).attr('data-emoji-bytes'))));
+  jQuery(this).text(utf8ByteArrayToString(JSON.parse(jQuery(this).attr('data-emoji-bytes'))));
 }
